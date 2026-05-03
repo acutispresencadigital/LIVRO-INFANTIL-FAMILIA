@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Gochi+Hand&family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Gochi Hand", cursive;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F0F9FF] text-[#4A3728] antialiased;
+  }
+}
+
+.bg-hero-gradient {
+  background: radial-gradient(circle at top right, #E0F2FE 0%, #F0F9FF 100%);
+}
+
+.glass-card {
+  @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)];
+}
+
+@keyframes glint {
+  0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  2% { opacity: 1; }
+  15% { transform: translateX(150%) skewX(-15deg); opacity: 1; }
+  16%, 100% { transform: translateX(150%) skewX(-15deg); opacity: 0; }
+}
+.animate-glint {
+  animation: glint 5s infinite ease-in-out;
+}
+
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  z-index: 1;
+}
+
+.cloud-divider {
+  @apply relative w-full overflow-hidden leading-[0];
+}
+
+.cloud-divider svg {
+  @apply relative block w-full h-[60px] md:h-[120px];
+}
+
+.cloud-fill {
+  fill: #FFFFFF;
+}
+
+.rainbow-title span:nth-child(5n+1) { color: #FF5D5D; }
+.rainbow-title span:nth-child(5n+2) { color: #A084DC; }
+.rainbow-title span:nth-child(5n+3) { color: #5BC0F8; }
+.rainbow-title span:nth-child(5n+4) { color: #54B435; }
+.rainbow-title span:nth-child(5n+5) { color: #FF9F29; }
+
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px) rotate(var(--base-rotation, 0deg)); }
+  50% { transform: translateY(-20px) rotate(calc(var(--base-rotation, 0deg) + 3deg)); }
+  100% { transform: translateY(0px) rotate(var(--base-rotation, 0deg)); }
+}
+
+.sticker-shadow {
+  filter: drop-shadow(8px 8px 0px rgba(0,0,0,0.05));
+}
+
+.book-shadow {
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.1),
+    0 20px 40px rgba(0,0,0,0.05),
+    inset 0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.badge-seal {
+  @apply absolute -top-6 -right-6 flex flex-col items-center justify-center;
+  @apply w-32 h-32 md:w-36 md:h-36 rounded-full bg-[#FFD93D] border-4 border-white shadow-2xl;
+  @apply rotate-12 z-20;
+}
+
+.brush-underline {
+  @apply relative inline-block;
+}
+
+.brush-underline::after {
+  content: "";
+  @apply absolute -bottom-1 left-0 w-full h-3 bg-yellow-300 -z-10 rounded-full opacity-60;
+  transform: skewX(-15deg);
+}

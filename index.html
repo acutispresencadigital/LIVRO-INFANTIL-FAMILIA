@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Existem Muitos Jeitos de Ser Família - Livro Digital</title>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Fredoka+One&display=swap');
+
+      :root {
+        --r: #E8192C;
+        --roxo: #7B2FBE;
+        --verde: #1E9642;
+        --azul: #1B87C4;
+        --am: #F5C200;
+        --rosa: #E8306A;
+        --cinza-f: #F6F4F0;
+        --texto: #1a1a1a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #fff;
+        color: var(--texto);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, .fredoka {
+        font-family: 'Fredoka One', cursive;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      /* 1. BARRA STICKY */
+      .sticky-bar {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: var(--r);
+        color: #fff;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        font-size: clamp(11px, 2.2vw, 14px);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: pulse 1s infinite alternate;
+      }
+
+      @keyframes pulse {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+
+      .timer-box {
+        background: #fff;
+        color: var(--r);
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(17px, 3.5vw, 22px);
+        padding: 2px 14px;
+        border-radius: 6px;
+        letter-spacing: 3px;
+        min-width: 72px;
+        text-align: center;
+      }
+
+      /* 2. BANNERS */
+      .banner-picture img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* 3. SEÇÃO PROBLEMA */
+      .problema {
+        background-color: var(--am);
+        padding: 60px 28px 52px;
+        text-align: center;
+      }
+
+      .badge {
+        background-color: var(--r);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        padding: 6px 18px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .problema h2 {
+        font-size: clamp(26px, 5.5vw, 46px);
+        color: var(--texto);
+        margin-bottom: 30px;
+        line-height: 1.1;
+      }
+
+      .box-destaque {
+        background: #fff;
+        border-left: 4px solid var(--r);
+        border-radius: 0 8px 8px 0;
+        padding: 16px 22px;
+        max-width: 460px;
+        margin: 0 auto 24px;
+        text-align: left;
+      }
+
+      .box-destaque p {
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(18px, 3.5vw, 26px);
+        color: var(--r);
+      }
+
+      .problema-corpo {
+        font-weight: 600;
+        font-size: clamp(15px, 2.6vw, 18px);
+        color: #2a2a2a;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .arrow-down {
+        margin-top: 40px;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid #2a2a2a;
+        margin-left: auto;
+        margin-right: auto;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+      }
+
+      /* 5. BOTÃO PÓS-BANNER 2 */
+      .pos-banner-btn {
+        background: #fff;
+        padding: 36px 24px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .btn-rosa {
+        background-color: var(--rosa);
+        color: #fff;
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(16px, 3vw, 21px);
+        padding: 16px 44px;
+        border-radius: 8px;
+      }
+
+      /* 8. CTA VERDE */
+      .cta-verde {
+        background-color: var(--verde);
+        padding: 64px 28px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .cta-verde h2 {
+        font-size: clamp(22px, 4.5vw, 38px);
+        margin-bottom: 20px;
+      }
+
+      .original-price {
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: line-through;
+        color: rgba(255, 255, 255, 0.55);
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .offer-price {
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(38px, 8vw, 64px);
+        color: var(--am);
+        line-height: 1;
+        margin-bottom: 32px;
+        display: block;
+      }
+
+      .btn-am {
+        background-color: var(--am);
+        color: var(--texto);
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(15px, 2.8vw, 20px);
+        padding: 16px 44px;
+        border-radius: 8px;
+      }
+
+      .selos {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 700;
+        margin-top: 15px;
+      }
+
+      /* 10. SEÇÃO BENEFÍCIOS */
+      .beneficios {
+        background-color: var(--cinza-f);
+        padding: 64px 28px;
+      }
+
+      .beneficios h2 {
+        font-size: clamp(20px, 4vw, 32px);
+        color: var(--roxo);
+        text-align: center;
+        margin-bottom: 36px;
+      }
+
+      .beneficios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        max-width: 760px;
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      .beneficios-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 24px 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+
+      .beneficios-card.rosa { border-top: 4px solid var(--rosa); }
+      .beneficios-card.azul { border-top: 4px solid var(--azul); }
+
+      .beneficios-card h4 {
+        font-size: 14px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+      }
+
+      .beneficios-list {
+        list-style: none;
+      }
+
+      .beneficios-list li {
+        display: flex;
+        gap: 10px;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 600;
+        color: #444;
+      }
+
+      .beneficios-list li:last-child { border-bottom: none; }
+
+      .check-rosa { color: var(--rosa); font-weight: 900; }
+      .check-azul { color: var(--azul); font-weight: 900; }
+
+      /* 12. SEÇÃO PÚBLICO-ALVO */
+      .publico {
+        background-color: var(--roxo);
+        padding: 64px 28px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .publico h2 {
+        font-size: clamp(20px, 4vw, 34px);
+        margin-bottom: 15px;
+      }
+
+      .publico-sub {
+        font-weight: 600;
+        font-size: clamp(14px, 2.5vw, 17px);
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 480px;
+        margin: 0 auto 36px;
+        line-height: 1.6;
+      }
+
+      .publico-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        max-width: 600px;
+        margin: 0 auto;
+        gap: 14px;
+      }
+
+      .publico-card {
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 8px;
+        padding: 18px 16px;
+        text-align: left;
+      }
+
+      .publico-card h5 {
+        font-weight: 900;
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .publico-card p {
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
+      }
+
+      /* 14. SEÇÃO O QUE VOCÊ RECEBE */
+      .recebe {
+        background-color: #F0EBFA;
+        padding: 64px 28px;
+      }
+
+      .recebe h2 {
+        font-size: clamp(20px, 4vw, 32px);
+        color: var(--roxo);
+        text-align: center;
+        margin-bottom: 36px;
+      }
+
+      .recebe-list {
+        max-width: 520px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .recebe-item {
+        background: #fff;
+        border-radius: 8px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-left: 4px solid var(--roxo);
+      }
+
+      .icon-box {
+        width: 40px;
+        height: 40px;
+        background: var(--roxo);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #fff;
+        flex-shrink: 0;
+      }
+
+      .recebe-content h5 {
+        font-weight: 900;
+        font-size: 15px;
+        color: var(--texto);
+      }
+
+      .recebe-content p {
+        font-size: 13px;
+        color: #555;
+        font-weight: 600;
+        margin-top: 2px;
+      }
+
+      /* 16. CTA FINAL */
+      .cta-final {
+        background-color: var(--azul);
+        padding: 64px 28px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .cta-final h2 {
+        font-size: clamp(22px, 4.5vw, 38px);
+        margin-bottom: 20px;
+      }
+
+      .cta-final .original-price { color: rgba(255, 255, 255, 0.55); shadow: none; }
+
+      .final-price {
+        font-family: 'Fredoka One', cursive;
+        font-size: clamp(38px, 8vw, 60px);
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      /* 18. SEÇÃO GARANTIA */
+      .garantia {
+        background-color: #E8F8ED;
+        padding: 56px 28px;
+      }
+
+      .garantia-card {
+        max-width: 520px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 36px 30px;
+        text-align: center;
+        border: 2px solid var(--verde);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      }
+
+      .garantia-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--verde);
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: #fff;
+      }
+
+      .garantia h3 {
+        font-size: clamp(20px, 3.5vw, 28px);
+        color: var(--verde);
+        margin-bottom: 12px;
+      }
+
+      .garantia-p {
+        font-weight: 600;
+        font-size: clamp(14px, 2.3vw, 16px);
+        color: #333;
+        line-height: 1.7;
+      }
+
+      .garantia-p strong { color: var(--verde); }
+
+      /* WAVE DIVIDERS */
+      .wave-container {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .wave-container svg {
+        width: 100%;
+        height: 36px;
+      }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1314914260554779');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1314914260554779&ev=PageView&noscript=1"
+    /></noscript>
+
+    <!-- 1. BARRA STICKY -->
+    <div class="sticky-bar">
+      <div class="dot"></div>
+      Oferta de lançamento por tempo limitado:
+      <div class="timer-box" id="timer">05:00</div>
+    </div>
+
+    <!-- 2. BANNER 1 -->
+    <picture class="banner-picture">
+      <source media="(min-width: 768px)" srcset="https://i.imgur.com/bgDzlxH.jpeg">
+      <img src="https://i.imgur.com/A37QkMc.jpeg" alt="Existem Muitos Jeitos de Ser Família">
+    </picture>
+
+    <!-- 3. SEÇÃO PROBLEMA -->
+    <section class="problema">
+      <span class="badge">Para pais, mães, professores e cuidadores</span>
+      <h2>Toda criança vai perguntar. A dúvida é: quem vai responder?</h2>
+      
+      <div class="box-destaque">
+        <p>Se não for você, alguém — ou algo — vai responder no lugar.</p>
+      </div>
+
+      <p class="problema-corpo">
+        Seja em casa, na escola ou na internet — as perguntas sobre família e diversidade aparecem cedo.
+        Este livro foi criado para que adultos e crianças leiam juntos, com leveza, respeito e palavras certas para cada idade. Perfeito também para impressão e atividades em sala de aula.
+      </p>
+
+      <div class="arrow-down"></div>
+    </section>
+
+    <!-- 4. BANNER 2 -->
+    <picture class="banner-picture">
+      <source media="(min-width: 768px)" srcset="https://i.imgur.com/56s1jEw.png">
+      <img src="https://i.imgur.com/wNx6OyH.png" alt="A solução está aqui">
+    </picture>
+
+    <!-- 5. BOTÃO PÓS-BANNER 2 -->
+    <div class="pos-banner-btn">
+      <a href="#comprar" class="btn btn-rosa">Comprar livro — apenas R$29,90</a>
+    </div>
+
+    <!-- 6. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #fff;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,18 C300,36 900,0 1200,18 L1200,36 L0,36 Z" fill="#F6F4F0"></path>
+      </svg>
+    </div>
+
+    <!-- 7. BANNER 3 -->
+    <picture class="banner-picture">
+      <source media="(min-width: 768px)" srcset="https://i.imgur.com/kNCwmp4.jpeg">
+      <img src="https://i.imgur.com/w9e4CMk.jpeg" alt="Muitas Famílias">
+    </picture>
+
+    <!-- 8. CTA VERDE -->
+    <section class="cta-verde" id="comprar">
+      <h2>Garanta o seu agora</h2>
+      <span class="original-price">De R$49,90</span>
+      <span class="offer-price">R$29,90</span>
+      <a href="https://pay.hotmart.com/L99370783R?off=0n4scs2l&bid=1741036325995" class="btn btn-am">Garantir meu livro agora</a>
+      <p class="selos">7 dias de garantia · Pagamento seguro</p>
+    </section>
+
+    <!-- 9. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #1E9642;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,0 C400,36 800,0 1200,28 L1200,36 L0,36 Z" fill="#F6F4F0"></path>
+      </svg>
+    </div>
+
+    <!-- 10. SEÇÃO BENEFÍCIOS -->
+    <section class="beneficios">
+      <h2>O que esse livro transforma</h2>
+      <div class="beneficios-grid">
+        <div class="beneficios-card rosa">
+          <h4>Sua criança vai</h4>
+          <ul class="beneficios-list">
+            <li><span class="check-rosa">✓</span> Entender a diversidade sem confusão</li>
+            <li><span class="check-rosa">✓</span> Respeitar famílias diferentes da sua</li>
+            <li><span class="check-rosa">✓</span> Fazer perguntas com naturalidade</li>
+            <li><span class="check-rosa">✓</span> Crescer com empatia e coração aberto</li>
+          </ul>
+        </div>
+        <div class="beneficios-card azul">
+          <h4>Você vai</h4>
+          <ul class="beneficios-list">
+            <li><span class="check-azul">✓</span> Se sentir preparado para as perguntas</li>
+            <li><span class="check-azul">✓</span> Ensinar sem medo nem vergonha</li>
+            <li><span class="check-azul">✓</span> Ter um recurso pronto para usar em aula</li>
+            <li><span class="check-azul">✓</span> Criar memória afetiva com a criança</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #F6F4F0;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,28 C400,0 800,36 1200,8 L1200,36 L0,36 Z" fill="#7B2FBE"></path>
+      </svg>
+    </div>
+
+    <!-- 12. SEÇÃO PÚBLICO-ALVO -->
+    <section class="publico">
+      <h2>Para quem é este livro?</h2>
+      <p class="publico-sub">Criado para adultos que querem introduzir o tema com cuidado e segurança.</p>
+      
+      <div class="publico-grid">
+        <div class="publico-card">
+          <h5>Pais e mães</h5>
+          <p>Para ler junto antes de dormir ou responder dúvidas do dia a dia.</p>
+        </div>
+        <div class="publico-card">
+          <h5>Professores</h5>
+          <p>Base para atividades impressas e rodas de conversa em sala de aula.</p>
+        </div>
+        <div class="publico-card">
+          <h5>Avós e familiares</h5>
+          <p>Um presente que abre conversa e fortalece laços afetivos.</p>
+        </div>
+        <div class="publico-card">
+          <h5>Psicólogos e pedagogos</h5>
+          <p>Suporte lúdico para trabalhar inclusão com crianças de 3 a 8 anos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #7B2FBE;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,8 C300,36 900,0 1200,22 L1200,36 L0,36 Z" fill="#F0EBFA"></path>
+      </svg>
+    </div>
+
+    <!-- 14. SEÇÃO O QUE VOCÊ RECEBE -->
+    <section class="recebe">
+      <h2>O que você recebe</h2>
+      <div class="recebe-list">
+        <div class="recebe-item">
+          <div class="icon-box">📖</div>
+          <div class="recebe-content">
+            <h5>Livro digital completo</h5>
+            <p>PDF em alta qualidade, pronto para leitura ou impressão.</p>
+          </div>
+        </div>
+        <div class="recebe-item">
+          <div class="icon-box">⚡</div>
+          <div class="recebe-content">
+            <h5>Acesso imediato</h5>
+            <p>Recebe no e-mail logo após a confirmação do pagamento.</p>
+          </div>
+        </div>
+        <div class="recebe-item">
+          <div class="icon-box">🎓</div>
+          <div class="recebe-content">
+            <h5>Apto para uso educacional</h5>
+            <p>Pode ser impresso e usado em atividades escolares.</p>
+          </div>
+        </div>
+        <div class="recebe-item">
+          <div class="icon-box">💬</div>
+          <div class="recebe-content">
+            <h5>Linguagem infantil acessível</h5>
+            <p>Texto pensado para crianças de 3 a 8 anos lerem com adultos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #F0EBFA;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,10 C300,36 900,0 1200,24 L1200,36 L0,36 Z" fill="#1B87C4"></path>
+      </svg>
+    </div>
+
+    <!-- 16. CTA FINAL -->
+    <section class="cta-final">
+      <h2>Pronto para começar essa conversa?</h2>
+      <span class="original-price">De R$49,90</span>
+      <span class="final-price">R$29,90</span>
+      <a href="#comprar" class="btn btn-rosa">Garantir meu livro agora</a>
+      <p style="font-size: 12px; color: rgba(255,255,255,.75); font-weight: 800; letter-spacing: 1.5px; uppercase; margin-top: 18px;">
+        Visa · Mastercard · Pix
+      </p>
+    </section>
+
+    <!-- 17. WAVE DIVIDER -->
+    <div class="wave-container" style="background: #1B87C4;">
+      <svg viewBox="0 0 1200 36" preserveAspectRatio="none">
+        <path d="M0,18 C300,0 900,36 1200,12 L1200,36 L0,36 Z" fill="#E8F8ED"></path>
+      </svg>
+    </div>
+
+    <!-- 18. SEÇÃO GARANTIA -->
+    <section class="garantia">
+      <div class="garantia-card">
+        <div class="garantia-icon">🛡</div>
+        <h3>7 dias de garantia total</h3>
+        <p class="garantia-p">
+          Se por qualquer motivo você não ficar satisfeito nos primeiros 7 dias, devolvemos <strong>100% do seu dinheiro</strong>. Sem burocracia, sem questionamentos.
+        </p>
+      </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+      // TIMER SCRIPT
+      let t = 5 * 60;
+      const timerDisplay = document.getElementById('timer');
+      
+      const countdown = setInterval(() => {
+        if (t > 0) {
+          t--;
+        } else {
+          clearInterval(countdown);
+        }
+        
+        const minutes = Math.floor(t / 60);
+        const seconds = t % 60;
+        timerDisplay.textContent = 
+          String(minutes).padStart(2, '0') + ':' + 
+          String(seconds).padStart(2, '0');
+      }, 1000);
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if(target) {
+              target.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
